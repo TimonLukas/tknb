@@ -16,7 +16,5 @@ class ExampleGui(Gui):
         self.button = Button(self.root, text="Increment!", command=lambda: self.emit("increment", None))
         self.button.grid(row=1)
 
-        self.loop()
-
     def update_label(self, count: int) -> None:
         self.label["text"] = f"Button has been clicked {count} times"

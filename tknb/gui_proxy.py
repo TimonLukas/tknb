@@ -94,7 +94,7 @@ class GuiProxy:
                     "\n".join(
                         [
                             f"from {module} import {class_name}",
-                            f"{class_name}.create()",
+                            f"{class_name}.create().loop()",
                         ]
                     ),
                 ],

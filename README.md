@@ -38,9 +38,6 @@ class ExampleGui(Gui):
         
         self.label = Label(self.root, text="Hello world!")
         self.label.grid(row=0)
-        
-        # This is important, you have to call this!
-        self.loop()
     
     def update_label(self, text: str) -> None:
         self.label["text"] = text
@@ -77,9 +74,6 @@ class ExampleGui(Gui):
         self.click_counter = 0
         self.button = Button(self.root, text="Click me!", command=self.button_clicked)
         self.button.grid(row=0)
-        
-        # This is important, you have to call this!
-        self.loop()
     
     def button_clicked(self):
         self.emit("clicked", f"Button was clicked {self.click_counter} times!")

@@ -65,7 +65,7 @@ class Gui(ABC):
 
         # Since this is just called by a script that doesn't care for the
         # return value, we don't need to return here
-        cls(*args, **{**kwargs, "connection": connection})
+        return cls(*args, **{**kwargs, "connection": connection})
 
     def __init__(self, *args, connection: Connection, **kwargs):
         super().__init__(*args, **kwargs)
