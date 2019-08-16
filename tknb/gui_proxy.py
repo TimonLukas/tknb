@@ -21,6 +21,13 @@ if GUI_CREATION_ENV_VARIABLE not in os.environ:
     _listener = Listener(("localhost", SOCKET_PORT))
 
 
+def _create_empty_handler_handler(handler: Callable[[], Any]) -> Callable[[Any], Any]:
+    def new_handler(_: Any) -> Any:
+        return handler()
+
+    return new_handler
+
+
 class GuiProxy:
     """Class that proxies all calls in a client thread to the socket GUI
 
@@ -194,6 +201,17 @@ class GuiProxy:
     def on(self, event_name: str, handler: Callable) -> None:
         if event_name not in self._event_handlers:
             self._event_handlers[event_name] = []
+
+        parameter_count = len(inspect.signature(handler).parameters)
+        if parameter_count > 1:
+            raise AssertionError(" ".join([
+                f"Handler \"{handler.__name__}\" for event \"{event_name}\" must have 0 or 1 parameters",
+                f"({parameter_count} given)"
+            ]))
+
+        # Allow the user to use a handler with no parameters
+        if parameter_count == 0:
+            handler = _create_empty_handler_handler(handler)
 
         self._event_handlers[event_name].append(handler)
 
