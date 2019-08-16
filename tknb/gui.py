@@ -27,7 +27,7 @@ class Gui(ABC):
     def __new__(cls: "Type[Gui]", *args, **kwargs):
         # A Gui cannot be instantiated directly, it must be subclassed
         if cls == Gui:
-            raise AssertionError("You cannot instantiate tknb.GUI directly!")
+            raise AssertionError("You cannot instantiate tknb.Gui directly!")
 
         # If this is set, we are in the subprocess
         # This means we have to create the actual GUI instance
