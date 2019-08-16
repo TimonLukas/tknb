@@ -87,3 +87,6 @@ from example_gui import ExampleGui
 gui = ExampleGui("GUI example: GUI to code communication")
 gui.on("clicked", lambda value: print(value))
 ```
+
+## To Do
+- [ ] Make constants configurable by user code
