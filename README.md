@@ -34,6 +34,8 @@ class ExampleGui(Gui):
         # Some custom stuff has to be passed, so you must accept *args and **kwargs
         super().__init__(*args, **kwargs)
         
+        # self.root is a tkinter.Tk object created by the library
+        # It's the "root object" for your GUI
         self.root.title(window_title)
         
         self.label = Label(self.root, text="Hello world!")
@@ -69,6 +71,8 @@ class ExampleGui(Gui):
         # Some custom stuff has to be passed, so you must accept *args and **kwargs
         super().__init__(*args, **kwargs)
         
+        # self.root is a tkinter.Tk object created by the library
+        # It's the "root object" for your GUI
         self.root.title(window_title)
         
         self.click_counter = 0
